@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+  <title>SignIn</title>
+</head>
+
+<body>
+
+
+  <div id="content" class="pt-20 px-4">
+
+    <div class="mt-8 grid grid-cols-12">
+      <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+      <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4 flex justify-center">
+
+        <!-- card -->
+        <div
+          class="block max-w-xl w-full p-6 border-t-[8px] border-b-[8px] bg-white border-blue-500 rounded-xl shadow-sm hover:bg-white dark:bg-gray-800 dark:border-blue-500 dark:hover:bg-gray-800">
+
+          <!-- Message Box -->
+          <div th:replace="~{signOutMessage :: messagebox}"></div>
+          <div th:replace="~{message :: messagebox}"></div>
+
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SignIn Here</h5>
+          <p class="font-normal text-gray-500 dark:text-gray-400">Start Managing Contacts On Cloud . . .</p>
+
+          <!-- EMAIL NOTICE ALERT -->
+          <div id="emailNotice" class="relative mt-2 flex gap-3 p-5 mb-6 rounded-xl
+                        bg-indigo-50 dark:bg-indigo-900/30
+                        border border-indigo-200 dark:border-indigo-700
+                        text-indigo-800 dark:text-indigo-200">
+
+            <i class="fa-solid fa-envelope-circle-check text-xl mt-1"></i>
+
+            <div>
+              <h4 class="font-semibold mb-1">Email Verification Notice</h4>
+              <p class="text-sm leading-relaxed">
+                SCM currently uses <strong>Mailtrap</strong> for email testing.
+                Because of this, verification links after signup cannot be delivered
+                to personal email addresses.
+              </p>
+              <p class="text-sm mt-2">
+                Please sign in using <strong>Google, Facebook, or GitHub</strong>.
+                If you need email-based access, contact us via the
+                <strong><a href="/contactus" class="text-blue-400 text-decoration: underline">Contact Us</a></strong>
+                page or <strong>Footer</strong>
+              </p>
+            </div>
+
+            <!-- Close Button -->
+            <button onclick="document.getElementById('emailNotice').remove()" class="absolute top-3 right-3 text-lg
+                            hover:text-red-500 transition">
+              &times;
+            </button>
+          </div>
+
+          <!-- Error Login Fail -->
+          <div th:if="${param.error}" class="flex justify-center p-4 mb-4 text-sm mt-2
+                      text-red-800 border border-red-300 rounded-lg
+                      bg-red-50 dark:bg-gray-800
+                      dark:text-red-400 dark:border-red-800" role="alert">
+
+            <!-- Icon -->
+            <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4
+                          a1.5 1.5 0 1 1 0 3
+                          a1.5 1.5 0 0 1 0-3ZM12 15H8
+                          a1 1 0 0 1 0-2h1v-3H8
+                          a1 1 0 0 1 0-2h2
+                          a1 1 0 0 1 1 1v4h1
+                          a1 1 0 0 1 0 2Z" />
+            </svg>
+
+            <span class="sr-only">Error</span>
+
+            <!-- Message -->
+            <div>
+              <span class="font-medium">Invalid Email Or Password</span>
+            </div>
+          </div>
+
+
+          <!-- Form -->
+          <form th:action="@{'/do-signin'}" method="post" class="mt-5">
+
+            <!-- Email -->
+            <div class="mb-4">
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+              <input type="email" name="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter Email" required />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label for="password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+
+              <div class="relative">
+                <input type="password" name="password" id="password"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  placeholder="Enter Password" required />
+
+                <!-- Show Password -->
+                <button type="button" id="togglePasswordBtn"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black dark:hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                          c4.477 0 8.268 2.943 9.542 7
+                          -1.274 4.057-5.065 7-9.542 7
+                          -4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="mt-10 flex justify-center space-x-5">
+              <button type="submit"
+                class="text-white bg-blue-700 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-green-700 dark:focus:ring-blue-600">SignIn</button>
+              <button type="reset" onclick="window.location.href='/signin'"
+                class="text-white bg-blue-700 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-blue-600">Reset</button>
+            </div>
+          </form>
+
+          <!-- Social Links -->
+          <div class="social-buttons-container flex flex-col items-center space-y-4 mt-6">
+
+            <!-- Google -->
+            <a th:href="@{'/oauth2/authorization/google'}" class="w-full max-w-sm
+                    text-white bg-blue-600 hover:bg-blue-700
+                    border border-blue-400 hover:border-white
+                    focus:ring-4 focus:outline-none focus:ring-blue-800
+                    font-medium rounded-lg text-sm
+                    px-5 py-3
+                    inline-flex items-center justify-center">
+              <svg class="w-4 h-4 me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 18 19">
+                <path
+                  d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948A8.841 8.841 0 0 1 8.8.383h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" />
+              </svg>
+              Sign in with Google
+            </a>
+
+            <!-- Facebook -->
+            <a th:href="@{'/oauth2/authorization/facebook'}" class="w-full max-w-sm
+                    text-white bg-blue-800 hover:bg-blue-900
+                    border border-blue-600 hover:border-white
+                    focus:ring-4 focus:outline-none focus:ring-blue-900
+                    font-medium rounded-lg text-sm
+                    px-5 py-3
+                    inline-flex items-center justify-center">
+              <svg class="w-4 h-4 me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 8 19">
+                <path
+                  d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" />
+              </svg>
+              Sign in with Facebook
+            </a>
+
+            <!-- GitHub -->
+            <a th:href="@{'/oauth2/authorization/github'}" class="w-full max-w-sm
+                    text-white bg-black hover:bg-gray-900
+                    border border-gray-600 hover:border-white
+                    focus:ring-4 focus:outline-none focus:ring-gray-700
+                    font-medium rounded-lg text-sm
+                    px-5 py-3
+                    inline-flex items-center justify-center">
+              <svg class="w-4 h-4 me-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" />
+              </svg>
+              Sign in with GitHub
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  </script>
+</body>
+
+</html>

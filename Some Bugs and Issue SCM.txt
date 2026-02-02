@@ -1,0 +1,7 @@
+Some Bugs and Issue after deployment of SCM in Aws
+
+1. Fix the Configuration with the cloudinary(img upload nhi ho rhi)
+
+2. If u want add the other mail provider(MailTrap is working but then it will send the mail to us not the user also chnage the domian the mailtrap send in the body as verification link in the mailtrap sandboxes)
+
+3. create a vaildation for oauth and singup user (agar koi user signup karta hai email same ex:hello@gmail.com and then agar same user signup karta hai using aouth then the signup account overide ho jata hai Oauth account se so make something that if the user signup using a email and then he tries to signin using same)

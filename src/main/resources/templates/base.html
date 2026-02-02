@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title th:replace="${title}">SCM</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" th:href="@{/css/output.css}" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body class="dark:bg-gray-900 bg-white">
+
+  <!-- PUBLIC -->
+  <div th:unless="${loggedInUser}">
+    <div th:replace="~{public_navbar :: public-navbar}"></div>
+  </div>
+
+  <!-- USER -->
+  <div th:if="${loggedInUser}">
+    <div th:replace="~{user/user_navbar :: user-navbar(title)}"></div>
+    <div th:replace="~{user/sidebar :: sidebar}"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <section th:replace="${content}"></section>
+
+  <!-- Footer -->
+  <div th:if="${showFooter}">
+    <div th:replace="~{footer :: footer}"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script th:src="@{/js/script.js}"></script>
+  <th:block th:replace="${script}"></th:block>
+
+</body>
+
+</html>

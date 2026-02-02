@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+  <title th:text="${loggedInUser.name} + ' | Dashboard'">Dashboard</title>
+</head>
+
+<body>
+  <div id="content" class="pt-20 sm:ml-64 lg:ml-80 px-6 text-center">
+
+    <!-- HEADER -->
+    <div class="mb-10 text-left">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight
+               text-gray-900 dark:text-white">
+        Dashboard
+      </h1>
+      <p class="mt-2 text-sm sm:text-base text-gray-500 dark:text-gray-400">
+        Overview of your account and contacts
+      </p>
+    </div>
+
+    <!-- ================= PROFILE CARD ================= -->
+    <div class="relative bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 mb-10
+              flex flex-col sm:flex-row items-center gap-6 text-left">
+
+      <!-- Avatar -->
+      <div class="relative">
+
+        <!-- Profile Image -->
+        <img th:src="${loggedInUser.profilePic != null ? loggedInUser.profilePic : '/images/default_user.png'}"
+          onerror="this.src='/images/default_user.png'" alt="User" class="w-28 h-28 rounded-full object-cover
+              ring-4 ring-blue-500/30 dark:ring-blue-400/30
+              shadow-lg" />
+
+        <!-- Online Dot (optional but cool) -->
+        <span class="absolute bottom-1 right-1 w-4 h-4
+                  bg-green-500 border-2 border-white dark:border-gray-800
+                  rounded-full"></span>
+      </div>
+
+      <!-- User Info -->
+      <div class="flex-1 text-center sm:text-left">
+
+        <h2 class="text-2xl sm:text-3xl font-extrabold
+                text-gray-900 dark:text-white" th:text="${loggedInUser.name}">
+          User Name
+        </h2>
+
+        <p class="mt-1 text-gray-500 dark:text-gray-400" th:text="${loggedInUser.email}">
+          email@example.com
+        </p>
+
+        <!-- Extra Info Row -->
+        <div class="mt-4 flex flex-wrap justify-center sm:justify-start gap-4">
+
+          <!-- Role -->
+          <span class="px-4 py-1.5 rounded-full text-sm font-semibold
+                    bg-blue-100 text-blue-700
+                    dark:bg-blue-900 dark:text-blue-300">
+            User
+          </span>
+
+          <!-- Contacts Count -->
+          <span class="px-4 py-1.5 rounded-full text-sm font-semibold
+                    bg-gray-100 text-gray-700
+                    dark:bg-gray-700 dark:text-gray-200">
+            <span th:text="${totalContacts}">0</span> Contacts
+          </span>
+
+        </div>
+      </div>
+
+      <!-- Action -->
+      <div class="mt-4 sm:mt-0">
+        <a th:href="@{/profile}" class="inline-flex items-center gap-2 px-5 py-2.5
+                rounded-xl text-sm font-semibold
+                bg-gradient-to-r from-blue-600 to-indigo-600
+                hover:from-blue-700 hover:to-indigo-700
+                text-white shadow-lg transition">
+          <i class="fa-regular fa-user"></i>
+          View Profile
+        </a>
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+
+      <!-- Total Contacts -->
+      <div class="bg-gradient-to-br from-blue-600 to-indigo-600
+                text-white rounded-2xl p-6 shadow-lg
+                flex items-center justify-between">
+        <div>
+          <p class="text-sm opacity-90">Total Contacts</p>
+          <h3 class="text-4xl font-extrabold" th:text="${totalContacts}">
+            0
+          </h3>
+        </div>
+        <i class="fa-solid fa-address-book text-4xl opacity-80"></i>
+      </div>
+
+      <!-- Favourite Contacts -->
+      <div class="bg-gradient-to-br from-pink-600 to-rose-600
+                text-white rounded-2xl p-6 shadow-lg
+                flex items-center justify-between">
+        <div>
+          <p class="text-sm opacity-90">Favourite Contacts</p>
+          <h3 class="text-4xl font-extrabold" th:text="${favouriteContacts}">
+            0
+          </h3>
+        </div>
+        <i class="fa-solid fa-heart text-4xl opacity-80"></i>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    console.log("Dashboard loaded");
+  </script>
+
+</body>
+
+</html>

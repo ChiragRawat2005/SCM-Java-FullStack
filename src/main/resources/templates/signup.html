@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+  <title>SignUp</title>
+</head>
+
+<body>
+
+
+  <div id="content" class="pt-20 px-4">
+
+    <!-- CENTER WRAPPER -->
+    <div class="flex justify-center">
+      <div class="w-full max-w-xl">
+
+        <!-- card -->
+        <div
+          class="block max-w-xl w-full p-6 border-t-[8px] border-b-[8px] bg-white border-blue-500 rounded-xl shadow-sm hover:bg-white dark:bg-gray-800 dark:border-blue-500 dark:hover:bg-gray-800">
+
+          <!-- Message Box -->
+          <div th:replace="~{message :: messagebox}"></div>
+
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SignUp Here</h5>
+          <p class="font-normal text-gray-500 dark:text-gray-400">Start Managing Contacts On Cloud . . .</p>
+
+          <!-- Form -->
+          <form th:action="@{'/do-signup'}" th:object="${user}" method="post" class="mt-5">
+
+            <!-- Name -->
+            <div class="mb-4">
+              <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+              <input th:field="*{name}" type="text" id="name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter Name" required />
+              <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                class="mt-2 ml-1 text-sm text-red-600 dark:text-red-500"></p>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-4">
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+              <input th:field="*{email}" type="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter Email" required />
+              <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                class="mt-2 ml-1 text-sm text-red-600 dark:text-red-500"></p>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label for="password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+
+              <div class="relative">
+                <input th:field="*{password}" type="password" id="password"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  placeholder="Enter Password" required />
+
+                <!-- Show Password -->
+                <button type="button" id="togglePasswordBtn"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black dark:hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                            c4.477 0 8.268 2.943 9.542 7
+                            -1.274 4.057-5.065 7-9.542 7
+                            -4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </button>
+              </div>
+
+              <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                class="mt-2 ml-1 text-sm text-red-600 dark:text-red-500">
+              </p>
+            </div>
+
+
+            <!-- PhoneNumber -->
+            <div class="mb-4">
+              <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact</label>
+              <input th:field="*{phone}" type="text" id="phone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter Contact" required />
+              <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+                class="mt-2 ml-1 text-sm text-red-600 dark:text-red-500"></p>
+            </div>
+
+            <!-- About -->
+            <div class="mb-4">
+              <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                message</label>
+              <textarea th:field="*{message}" id="about" rows="6"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Write your thoughts here..."></textarea>
+              <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"
+                class="mt-2 ml-1 text-sm text-red-600 dark:text-red-500"></p>
+            </div>
+
+            <!-- Button -->
+            <div class="mt-10 flex justify-center space-x-5">
+              <button type="submit"
+                class="text-white bg-blue-700 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-green-700 dark:focus:ring-blue-600">SignUp</button>
+              <button type="reset" onclick="window.location.href='/signup'"
+                class="text-white bg-blue-700 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-blue-600">Reset</button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <script>
+  </script>
+</body>
+
+</html>

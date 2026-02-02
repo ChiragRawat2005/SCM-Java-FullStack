@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+  <title>Services | SCM</title>
+</head>
+
+<body>
+  <div id="content" class="pt-8">
+
+    <!-- =====================================================
+ HERO – SERVICES INTRO
+===================================================== -->
+    <section class="relative overflow-hidden py-40">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute -top-32 left-1/4 w-[38rem] h-[38rem]
+                bg-blue-500/20 blur-3xl rounded-full animate-pulse"></div>
+        <div class="absolute top-1/3 right-1/4 w-[42rem] h-[42rem]
+                bg-indigo-500/20 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-8
+               text-gray-900 dark:text-white">
+          Powerful
+          <span class="bg-gradient-to-r from-blue-600 to-indigo-600
+                   bg-clip-text text-transparent">
+            Services
+          </span>
+          Built for SCM
+        </h1>
+
+        <p class="text-xl text-gray-600 dark:text-gray-400
+              max-w-3xl mx-auto leading-relaxed">
+          Everything SCM offers is designed to help you manage,
+          organize, and secure your contacts effortlessly —
+          at any scale.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+ CORE SERVICES (BIG PREMIUM CARDS)
+===================================================== -->
+    <section class="relative py-40 overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-1/4 left-10 w-[30rem] h-[30rem]
+                bg-indigo-500/15 blur-3xl rounded-full"></div>
+        <div class="absolute bottom-1/4 right-10 w-[34rem] h-[34rem]
+                bg-blue-500/15 blur-3xl rounded-full"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-28">
+          <h2 class="text-3xl md:text-5xl font-extrabold
+                 text-gray-900 dark:text-white mb-6">
+            Core SCM Services
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400
+                max-w-2xl mx-auto">
+            Built with performance, security, and simplicity at the core.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
+
+          <!-- Service Card -->
+          <div class="group relative p-12 rounded-3xl
+                  bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  shadow-xl transition-all duration-500
+                  hover:-translate-y-2
+                  hover:shadow-[0_0_70px_rgba(99,102,241,0.35)]">
+
+            <div class="absolute inset-0 rounded-3xl
+                    bg-gradient-to-r from-blue-600/10 to-indigo-600/10
+                    opacity-0 group-hover:opacity-100
+                    blur-xl transition"></div>
+
+            <div class="relative">
+              <div class="text-4xl mb-8">☁️</div>
+              <h3 class="text-2xl font-semibold mb-4 dark:text-white">
+                Cloud Sync
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">
+                Your contacts stay synced across all devices automatically.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>✔ Real-time updates</li>
+                <li>✔ Automatic backups</li>
+                <li>✔ Access anywhere</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="group relative p-12 rounded-3xl
+                  bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  shadow-xl transition-all duration-500
+                  hover:-translate-y-2
+                  hover:shadow-[0_0_70px_rgba(34,211,238,0.35)]">
+
+            <div class="absolute inset-0 rounded-3xl
+                    bg-gradient-to-r from-cyan-500/10 to-blue-500/10
+                    opacity-0 group-hover:opacity-100
+                    blur-xl transition"></div>
+
+            <div class="relative">
+              <div class="text-4xl mb-8">🔐</div>
+              <h3 class="text-2xl font-semibold mb-4 dark:text-white">
+                Advanced Security
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">
+                Enterprise-grade protection for all your contact data.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>✔ Secure authentication</li>
+                <li>✔ Data isolation</li>
+                <li>✔ Privacy-first design</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="group relative p-12 rounded-3xl
+                  bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  shadow-xl transition-all duration-500
+                  hover:-translate-y-2
+                  hover:shadow-[0_0_70px_rgba(168,85,247,0.35)]">
+
+            <div class="absolute inset-0 rounded-3xl
+                    bg-gradient-to-r from-purple-500/10 to-indigo-500/10
+                    opacity-0 group-hover:opacity-100
+                    blur-xl transition"></div>
+
+            <div class="relative">
+              <div class="text-4xl mb-8">👥</div>
+              <h3 class="text-2xl font-semibold mb-4 dark:text-white">
+                Team Collaboration
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">
+                Share and manage contacts with teams securely.
+              </p>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>✔ Role-based access</li>
+                <li>✔ Shared contacts</li>
+                <li>✔ Activity visibility</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+ ADDITIONAL CAPABILITIES (CLEAN GRID)
+===================================================== -->
+    <section class="relative py-36 bg-gray-50 dark:bg-gray-900 border-y dark:border-gray-800 overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute bottom-10 left-1/4 w-[36rem] h-[36rem]
+                bg-blue-500/15 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-24">
+          <h2 class="text-3xl md:text-5xl font-bold mb-6 dark:text-white">
+            More Powerful Tools
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            SCM goes beyond basics with intelligent tools built for growth.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+
+          <div class="p-10 rounded-3xl bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]
+                  hover:-translate-y-1 transition">
+            <div class="text-3xl mb-4">🔍</div>
+            <h4 class="text-xl font-semibold mb-2 dark:text-white">
+              Advanced Search
+            </h4>
+            <p class="text-gray-600 dark:text-gray-400">
+              Find contacts instantly with smart filters.
+            </p>
+          </div>
+
+          <div class="p-10 rounded-3xl bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  hover:shadow-[0_0_60px_rgba(99,102,241,0.35)]
+                  hover:-translate-y-1 transition">
+            <div class="text-3xl mb-4">📤</div>
+            <h4 class="text-xl font-semibold mb-2 dark:text-white">
+              Import & Export
+            </h4>
+            <p class="text-gray-600 dark:text-gray-400">
+              Move contacts in and out anytime.
+            </p>
+          </div>
+
+          <div class="p-10 rounded-3xl bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  hover:shadow-[0_0_60px_rgba(168,85,247,0.35)]
+                  hover:-translate-y-1 transition">
+            <div class="text-3xl mb-4">🏷️</div>
+            <h4 class="text-xl font-semibold mb-2 dark:text-white">
+              Smart Tags
+            </h4>
+            <p class="text-gray-600 dark:text-gray-400">
+              Organize contacts with custom labels.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA | SERVICES ================= -->
+    <section class="relative py-28 text-center overflow-hidden
+               bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700">
+
+      <!-- Dynamic Motion Glow -->
+      <div class="absolute inset-0 -z-10 pointer-events-none">
+        <div class="absolute top-1/3 left-1/4 w-[26rem] h-[26rem]
+                bg-cyan-400/20 blur-3xl rounded-full animate-pulse"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem]
+                bg-indigo-300/20 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Ready to Unlock SCM Services?
+      </h2>
+
+      <p class="text-lg text-white/90 max-w-2xl mx-auto mb-10">
+        Start managing contacts with clarity, speed, and confidence.
+      </p>
+
+      <a href="/signup" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl
+            bg-white text-blue-600 font-semibold
+            shadow-lg transition-all duration-300
+            hover:-translate-y-1
+            hover:shadow-[0_0_45px_rgba(34,211,238,0.45)]
+            hover:scale-[1.04]">
+        Start Free Today →
+      </a>
+    </section>
+
+
+  </div>
+
+  <script>
+    console.log("Services page loaded");
+  </script>
+</body>
+
+</html>

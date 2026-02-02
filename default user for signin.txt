@@ -1,0 +1,5 @@
+default user for signin in scm
+
+username - admin
+email - admin@gmail.com
+password - admin123

@@ -1,0 +1,27 @@
+<div th:fragment="messagebox" th:if="${session.message}" th:object="${session.message}" th:classappend="*{
+        'text-'+type+'-800 border border-'+type+'-300 rounded-lg ' +
+        'bg-'+type+'-50 dark:bg-gray-800 ' +
+        'dark:text-'+type+'-400 dark:border-'+type+'-800'
+     }" class="flex justify-center p-4 mb-4 text-sm" role="alert">
+
+    <!-- Icon -->
+    <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5
+             A9.51 9.51 0 0 0 10 .5ZM9.5 4
+             a1.5 1.5 0 1 1 0 3
+             a1.5 1.5 0 0 1 0-3ZM12 15H8
+             a1 1 0 0 1 0-2h1v-3H8
+             a1 1 0 0 1 0-2h2
+             a1 1 0 0 1 1 1v4h1
+             a1 1 0 0 1 0 2Z" />
+    </svg>
+
+    <!-- Message -->
+    <div>
+        <span class="font-medium" th:text="*{content}"></span>
+    </div>
+
+    <!-- auto-remove after render -->
+    <th:block th:text="${@sessionHelper.removeMessage()}"></th:block>
+</div>

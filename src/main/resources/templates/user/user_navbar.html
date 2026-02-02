@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+
+  <nav th:fragment="user-navbar(title)" class="fixed top-0 z-50 w-full
+               bg-white/90 backdrop-blur
+               border-b border-gray-200
+               dark:bg-gray-900/90 dark:border-gray-800">
+    <div class="px-4 py-3 flex items-center justify-between">
+
+      <!-- LEFT -->
+      <div class="flex items-center gap-4">
+
+        <!-- MOBILE TOGGLE -->
+        <button data-drawer-target="app-sidebar" data-drawer-toggle="app-sidebar" type="button" class="sm:hidden p-2 rounded-lg
+                     text-gray-600 hover:bg-gray-100
+                     dark:text-gray-300 dark:hover:bg-gray-800">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+
+        <!-- BRAND -->
+        <a class="flex items-center gap-3">
+          <img th:src="@{/images/logo.png}" class="h-8 w-8 lg:h-10 lg:w-10" alt="Logo" />
+          <div class="leading-tight">
+            <span class="block text-lg lg:text-xl font-bold text-gray-900 dark:text-white">
+              SCM
+            </span>
+            <span class="hidden lg:block text-xs text-gray-500">
+              Smart Contact Manager
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="flex items-center gap-4">
+
+        <!-- theme button -->
+        <button id="theme_change_button" class="bg-gray-200 px-3 py-2 rounded-lg dark:bg-gray-500">
+          <i class="fa-solid fa-circle-half-stroke"></i> <span>Light</span>
+        </button>
+
+        <!-- USER -->
+        <button data-dropdown-toggle="dropdown-user" class="rounded-full focus:ring-2 focus:ring-blue-500 relative">
+
+          <img th:src="${loggedInUser.profilePic != null ? loggedInUser.profilePic : '/images/default_user.png'}" 4
+            onerror="this.src='/images/default_user.png'" alt="User" class="w-9 h-9 rounded-full object-cover
+                    ring-2 ring-gray-200 dark:ring-gray-700" />
+
+          <!-- Online dot -->
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5
+                        bg-green-500 border-2 border-white dark:border-gray-800
+                        rounded-full"></span>
+        </button>
+
+
+        <!-- USER DROPDOWN -->
+        <div id="dropdown-user" class="hidden z-50 w-56
+                     bg-white dark:bg-gray-800
+                     border border-gray-200 dark:border-gray-700
+                     rounded-xl shadow-xl">
+          <!-- USER INFO -->
+          <div class="px-4 py-3 border-b dark:border-gray-700">
+
+            <p class="text-sm font-semibold text-gray-900 dark:text-white" th:text="${loggedInUser.name}">
+              User Name
+            </p>
+
+            <p class="text-xs text-gray-500 dark:text-gray-300" th:text="${loggedInUser.email}">
+              email@example.com
+            </p>
+          </div>
+          <ul class="p-2 text-sm">
+            <li>
+              <a th:href="@{/profile}"
+                class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
+                <i class="fa-regular fa-user"></i> Profile
+              </a>
+              <a th:href="@{/signup}" class="flex items-center gap-2 px-3 py-2 rounded-lg
+                          hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
+                <i class="fa-solid fa-user-plus"></i> Sign Up
+              </a>
+              <a th:href="@{/signin}" class="flex items-center gap-2 px-3 py-2 rounded-lg
+                          hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white">
+                <i class="fa-solid fa-right-left"></i> Switch Account
+              </a>
+            </li>
+            <li class="border-t dark:border-gray-700 mt-1">
+              <a th:href="@{'/signout'}"
+                class="flex items-center gap-2 px-3 py-2 rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-gray-700">
+                <i class="fa-solid fa-right-from-bracket"></i> Sign out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+</body>
+
+</html>

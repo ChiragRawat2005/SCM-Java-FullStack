@@ -1,0 +1,272 @@
+How To Deploy SCM In AWS
+
+Create Two IAM Roles (IAM>Roles)
+Select trusted entity
+1.
+{
+	Trusted entity type – AWS service
+	Use Case – Ec2
+	(EC2 Allows EC2 instances to call AWS services on your behalf.)
+	Permissions policies 
+	AWSElasticBeanstalkMulticontainerDocker
+	AWSElasticBeanstalkWebTier
+	AWSElasticBeanstalkWorkerTier
+	Name – scm 
+	Description – if u want
+}
+		OR
+{
+	Trusted entity type – AWS service
+	Use Case – Elastic Beanstalk
+	(Elastic Beanstalk - ComputeAllows your environment's EC2 instances to perform operations required for your application.)
+	Permissions policies 
+	AWSElasticBeanstalkMulticontainerDocker
+	AWSElasticBeanstalkWebTier
+	AWSElasticBeanstalkWorkerTier
+	Name – role 
+	Description – if u want }
+2.
+{
+	Trusted entity type – AWS service
+	Use Case – Elastic Beanstalk
+	(Elastic Beanstalk - EnvironmentAllows access to other AWS service resources that      are required to create and manage environments.)
+
+	Permissions policies 
+AWSElasticBeanstalkEnhancedHealth
+	AWSElasticBeanstalkManagedUpdatesCustomerRolePolicy
+	Name – role 
+	Description – if u want
+}
+
+Create One Vpc (IAM>Roles)
+resource to create - vpc only
+name tag - scm
+IPv4 - IPv4 CIDR manual input
+IPv4 CIDR - 10.0.0.0/16
+IPv6 CIDR block - No IPv6 CIDR block
+Tenancy - default
+VPC encryption control – none
+
+create internetgateway 
+just add name and then selete that internet gateway and go to action and select attach to vpc and select your vpc
+
+
+
+Create 2 Subnet
+
+vpc id - scm
+subnet name – scmSubnet1
+Avaiability Zone - Any(mine south – 1b) Zone Always be different from the other subnet
+IPv4 VPC CIDR block - scm(10.0.0.0/16)
+IPv4 subnet CIDR block - 10.0.1.0/24 Plz check use gpt
+
+Next Subnet
+
+vpc id - scm
+subnet name – scmSubnet2
+Avaiability Zone - Any(mine south – 1b) Zone Always be different from the other subnet
+IPv4 VPC CIDR block - scm(10.0.0.0/16)
+IPv4 subnet CIDR block - 10.0.2.0/24 Plz check use gpt
+
+Connect subnet with the routes
+Select subnet > then click route downrow > edit route > add route > 0.0.0.0/0  >  internet gateway u created > create
+Note : first connect the internetgateway with both route if cause any error late then only connect with one 
+
+Create Environment 
+
+# Configure environment 
+{
+Environment tier - Web server environment
+application name - scm
+Environment Info - Scm-env (auto generated) 
+domain - scm2
+then click check availability (Mine - scm2.ap-south-1.elasticbeanstalk.com)
+	Platform - Java
+	Platform branch - 21 (Mine Java Version) (according to project Choose karna)
+	Platform version - aws apne according de diya
+	Application code - Version label - 21 (Mine Java Version) (according to project Choose karna itna zaruri nhi hai for dev knowledge nothing to related with aws)
+	Local file – apne code ki jar file select karna
+	Presets - Single instance (free tier eligible)
+}
+
+Nxt >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Configure service access
+{
+service role - what ever u created (two policies  jo banaya tha)
+EC2 instance profile - what ever u created (three policies  jo banaya tha)
+Ec2 key pair – not needed
+}
+
+Nxt >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Set up networking, database, and tags - optional
+{
+vpc – scm(apna wala)
+instance subnet – all subnet we created ( we created two)
+database – Enable
+snapshort – non
+Data subnet – all subnet we created ( we created two)
+	Engine - mysql
+	Engine Version - 8.4.7
+	instance class - db.t3.micro ( free yahi support karta hai)
+	storage - 5gb
+	username - root(apna jo project mai ho vahi)
+	password – 8383891180(apna jo project mai ho vahi)
+	availablity - Low (one AZ) ~ aws given
+	database deletion policy - delete
+}
+
+Nxt >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Configure instance traffic and scaling - optional 
+{
+EC2 security groups - default wala
+Instance types - t3.micro(free yahi support karta hai)
+}
+
+Nxt >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# Configure updates, monitoring, and logging - optional 
+{
+Monitoring - System – basic 	
+Managed updates - enable/activate (deselect)
+email - if u want to add (ye bass email send karega apke mail per apke beanstack ki health/sahi chal raha hai ki nhi)
+
+Environment properties - (Most Important hai ye)
+{
+	Jo apne application mai khai property dali thi aab us name ko dalo with values
+	Ex - 
+Source
+Key
+Value
+
+{  (already given by aws)
+Plain text
+GRADLE_HOME
+/usr/local/gradle
+
+Plain text
+M2
+/usr/local/apache-maven/bin
+
+Plain text
+M2_HOME
+/usr/local/apache-maven
+}
+
+Plain text
+ACTIVE_PROFILE
+dev
+
+Plain text
+CLOUDINARY_API_KEY
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+CLOUDINARY_API_SECRET
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+CLOUDINARY_NAME
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+DDL_AUTO
+update
+
+Plain text
+EMAIL_DOMAIN
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+EMAIL_HOST
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+EMAIL_PASSWORD
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+EMAIL_PORT
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+EMAIL_USERNAME
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+FACEBOOK_CLIENT_ID
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+FACEBOOK_CLIENT_SECRET
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+GITHUB_CLIENT_ID
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+GITHUB_CLIENT_SECRET
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+GOOGLE_CLIENT_ID
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+GOOGLE_CLIENT_SECRET
+xxxxxxxxxxxxxxxxxx
+
+Plain text
+MAX_FILE_SIZE
+2MB
+
+Plain text
+MAX_REQUEST_SIZE
+2MB
+
+Plain text
+MYSQL_DB
+ebdb
+
+Plain text
+MYSQL_HOST
+Localhost ( is jagha aws db ki Endpoint lagega ek baar beanstack on ho jaye fir)
+
+Plain text
+MYSQL_PASSWORD
+8383891180
+
+Plain text
+MYSQL_PORT
+3306
+
+Plain text
+MYSQL_USER
+root
+
+Plain text
+PORT
+8080
+
+Plain text
+SHOW_SQL
+False
+}
+
+Create Karlean review k baad >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Add jese hi beanstack ki health green ho jaye tho db mai jana apna new created db select karna niche kahi Connection steps (Endpoint likha hoga)
+Ex - mysql -h awseb-e-e53attwih9-stack-awsebrdsdatabase-n8fbwsy5l1mn.ctkc2q4o07di.ap-south-1.rds.amazonaws.com -P 3306 -u root -p'<Enter_DB_Password>' --ssl-verify-server-cert --ssl-ca=/certs/global-bundle.pem ebdb
+ Isme se itna part (awseb-e-e53attwih9-stack-awsebrdsdatabase-n8fbwsy5l1mn.ctkc2q4o07di.ap-south-1.rds.amazonaws.com) select kar lena fir jana direct apne env k andar waha kuch configuration likha hoga waha jana fir (Updates, monitoring, and logging) edit per jana fir jaha MYSQL_HOST – localhost(ise hata kar yaha paste karna) and save 
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Now Enjoy >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Note : agar koi bhi issue aye tho chatgpt ka use kar lena ja yt ka jese maine kiya kafi time laga per ho gaya.
+Ek baat or Elastic Beanstack apne aap sab bana leta hai like instance etc etc tho apko kuch nhi karna
+or Go To Oauth provide and change the urls jaha per bhi local host likha ho vaha per apna domain dal dena
+Or Apne all over project mai changes karna especially in js file mai jaha per bhi local host likha ho vaha per apna domain dal dena check all file url's.
+there is also a method in heplers>Helper called getLinkForEmailVerification change the link there also

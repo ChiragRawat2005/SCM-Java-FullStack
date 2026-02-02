@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+  <title>Contact Us | SCM</title>
+</head>
+
+<body>
+  <div id="content" class="pt-8">
+
+    <!-- =====================================================
+ HERO – CONTACT INTRO
+===================================================== -->
+    <section class="relative overflow-hidden py-40">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute -top-24 left-1/4 w-[36rem] h-[36rem]
+                bg-blue-500/20 blur-3xl rounded-full animate-pulse"></div>
+        <div class="absolute bottom-10 right-1/4 w-[42rem] h-[42rem]
+                bg-indigo-500/20 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-8
+               text-gray-900 dark:text-white">
+          Get in
+          <span class="bg-gradient-to-r from-blue-600 to-indigo-600
+                   bg-clip-text text-transparent">
+            Touch
+          </span>
+        </h1>
+
+        <p class="text-xl text-gray-600 dark:text-gray-400
+              max-w-3xl mx-auto leading-relaxed">
+          Have questions, feedback, or need help?
+          The SCM team is here to support you.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+ CONTACT INFO CARDS
+===================================================== -->
+    <section class="relative py-32 overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-1/3 left-10 w-[30rem] h-[30rem]
+                bg-cyan-500/15 blur-3xl rounded-full"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-12">
+
+          <!-- Email -->
+          <div class="group p-10 rounded-3xl bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  text-center shadow-xl transition
+                  hover:-translate-y-2
+                  hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]">
+            <div class="text-4xl mb-6">📧</div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">Email Us</h3>
+            <p class="text-blue-600 font-medium mb-1">chiragrawat0708@gmail.com</p>
+            <p class="text-gray-500 dark:text-gray-400">
+              We respond within 24 hours
+            </p>
+          </div>
+
+          <!-- Phone -->
+          <div class="group p-10 rounded-3xl bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  text-center shadow-xl transition
+                  hover:-translate-y-2
+                  hover:shadow-[0_0_60px_rgba(99,102,241,0.35)]">
+            <div class="text-4xl mb-6">📞</div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">Call Us</h3>
+            <p class="text-blue-600 font-medium mb-1">+91 83838 91180</p>
+            <p class="text-gray-500 dark:text-gray-400">
+              Mon–Fri, 9 AM – 6 PM
+            </p>
+          </div>
+
+          <!-- Location -->
+          <div class="group p-10 rounded-3xl bg-white dark:bg-gray-800
+                  border border-gray-200 dark:border-gray-700
+                  text-center shadow-xl transition
+                  hover:-translate-y-2
+                  hover:shadow-[0_0_60px_rgba(168,85,247,0.35)]">
+            <div class="text-4xl mb-6">📍</div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">Our Office</h3>
+            <p class="text-blue-600 font-medium mb-1">Sant Nagar-Burari, Delhi</p>
+            <p class="text-gray-500 dark:text-gray-400">
+              Serving users worldwide
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+ CONTACT FORM + FAQ
+===================================================== -->
+    <section class="relative py-40 bg-gray-50 dark:bg-gray-900
+               border-y dark:border-gray-800 overflow-hidden">
+
+      <div class="absolute inset-0 -z-10 pointer-events-none">
+        <div class="absolute top-20 left-1/4 w-[32rem] h-[32rem]
+                bg-blue-500/20 blur-3xl rounded-full
+                animate-pulse"></div>
+
+        <div class="absolute bottom-20 right-1/4 w-[36rem] h-[36rem]
+                bg-indigo-500/20 blur-3xl rounded-full
+                animate-pulse"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
+
+        <!-- FORM -->
+        <div class="group relative p-12 rounded-3xl
+                bg-white/80 dark:bg-gray-800/80
+                backdrop-blur-xl
+                border border-gray-200 dark:border-gray-700
+
+                shadow-[0_20px_50px_-20px_rgba(0,0,0,0.25)]
+                dark:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]
+
+                transition-all duration-500 ease-out
+                hover:-translate-y-2
+                hover:border-blue-500/40
+                hover:shadow-[0_30px_80px_-20px_rgba(99,102,241,0.35)]
+                dark:hover:shadow-[0_30px_90px_-25px_rgba(99,102,241,0.45)]">
+
+          <h2 class="text-2xl font-bold mb-6 dark:text-white">
+            Send Us a Message
+          </h2>
+
+          <form class="space-y-6">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-xl dark:text-white
+                        border border-gray-300 dark:border-gray-700
+                        bg-transparent focus:outline-none focus:ring-2
+                        focus:ring-blue-500" />
+              <input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-xl dark:text-white
+                        border border-gray-300 dark:border-gray-700
+                        bg-transparent focus:outline-none focus:ring-2
+                        focus:ring-blue-500" />
+            </div>
+
+            <input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded-xl dark:text-white
+                      border border-gray-300 dark:border-gray-700
+                      bg-transparent focus:outline-none focus:ring-2
+                      focus:ring-blue-500" />
+
+            <textarea rows="5" placeholder="Your Message" class="w-full px-4 py-3 rounded-xl dark:text-white
+                         border border-gray-300 dark:border-gray-700
+                         bg-transparent focus:outline-none focus:ring-2
+                         focus:ring-blue-500 resize-none"></textarea>
+
+            <button type="submit" class="w-full px-8 py-4 rounded-xl
+                bg-gradient-to-r from-blue-600 to-indigo-600
+                text-white font-semibold
+
+                shadow-lg
+                transition-all duration-300
+                hover:shadow-[0_0_40px_rgba(99,102,241,0.45)]
+                hover:scale-[1.02]">
+              Send Message →
+            </button>
+          </form>
+        </div>
+
+        <!-- FAQ -->
+        <div>
+          <h2 class="text-3xl font-bold mb-8 dark:text-white">
+            Common Questions
+          </h2>
+
+          <div class="space-y-6">
+            <div class="group p-8 rounded-2xl
+            bg-white dark:bg-gray-800
+            border border-gray-200 dark:border-gray-700
+            shadow-lg
+            transition-all duration-300 ease-out
+            hover:-translate-y-1
+            hover:shadow-[0_0_50px_rgba(34,211,238,0.25)]
+            dark:hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]">
+              <h4 class="font-semibold mb-2 dark:text-white">Is SCM secure?</h4>
+              <p class="text-gray-600 dark:text-gray-400">
+                Yes. SCM uses secure authentication and strict data isolation.
+              </p>
+            </div>
+
+            <div class="group p-8 rounded-2xl
+            bg-white dark:bg-gray-800
+            border border-gray-200 dark:border-gray-700
+            shadow-lg
+            transition-all duration-300 ease-out
+            hover:-translate-y-1
+            hover:shadow-[0_0_50px_rgba(34,211,238,0.25)]
+            dark:hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]">
+              <h4 class="font-semibold mb-2 dark:text-white">Can I export my contacts?</h4>
+              <p class="text-gray-600 dark:text-gray-400">
+                Absolutely. Export anytime in CSV or Excel format.
+              </p>
+            </div>
+
+            <div class="group p-8 rounded-2xl
+            bg-white dark:bg-gray-800
+            border border-gray-200 dark:border-gray-700
+            shadow-lg
+            transition-all duration-300 ease-out
+            hover:-translate-y-1
+            hover:shadow-[0_0_50px_rgba(34,211,238,0.25)]
+            dark:hover:shadow-[0_0_60px_rgba(34,211,238,0.35)]">
+              <h4 class="font-semibold mb-2 dark:text-white">Is SCM free?</h4>
+              <p class="text-gray-600 dark:text-gray-400">
+                Yes, you can start for free with no credit card required.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA | CONTACT ================= -->
+    <section class="relative py-28 text-center overflow-hidden
+               bg-gradient-to-r from-indigo-600 to-blue-700">
+
+      <!-- Calm Glow -->
+      <div class="absolute inset-0 -z-10 pointer-events-none">
+        <div class="absolute top-1/4 left-1/3 w-[28rem] h-[28rem]
+                bg-blue-300/20 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Let’s Build Better Connections
+      </h2>
+
+      <p class="text-lg text-white/90 max-w-2xl mx-auto mb-10">
+        Reach out today and see how SCM can simplify your contact management.
+      </p>
+
+      <a href="/signup" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl
+            bg-white text-indigo-600 font-semibold
+            shadow-lg transition-all duration-300
+            hover:-translate-y-1
+            hover:shadow-[0_0_40px_rgba(168,85,247,0.45)]
+            hover:scale-[1.04]">
+        Get Started Free →
+      </a>
+    </section>
+
+
+  </div>
+
+  <script>
+    console.log("Contact page loaded");
+  </script>
+</body>
+
+</html>

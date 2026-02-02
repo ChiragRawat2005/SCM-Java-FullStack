@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+  <title>Privacy Policy | SCM</title>
+</head>
+
+<body>
+  <div id="content">
+
+    <!-- HERO -->
+    <section class="relative py-36 text-center overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-20 left-1/4 w-[32rem] h-[32rem]
+                bg-blue-500/20 blur-3xl rounded-full animate-pulse"></div>
+        <div class="absolute bottom-10 right-1/4 w-[36rem] h-[36rem]
+                bg-indigo-500/20 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-extrabold
+             text-gray-900 dark:text-white mb-6">
+        Privacy Policy
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+        Your privacy is important to us. This policy explains how SCM collects,
+        uses, and protects your information.
+      </p>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="py-24 bg-gray-50 dark:bg-gray-900 border-y dark:border-gray-800">
+      <div class="max-w-5xl mx-auto px-6 space-y-12">
+
+        <div>
+          <h2 class="text-2xl font-bold dark:text-white mb-3">
+            Information We Collect
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            We collect basic account details such as name, email address,
+            and contact data you choose to store in SCM.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold dark:text-white mb-3">
+            How We Use Your Data
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Your data is used only to provide core SCM features like contact
+            management, authentication, and secure cloud access.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold dark:text-white mb-3">
+            Data Security
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            SCM uses secure authentication, encrypted connections, and
+            strict access control to protect your information.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold dark:text-white mb-3">
+            Your Control
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            You can update, export, or delete your data at any time
+            directly from your SCM account.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script></script>
+</body>
+
+</html>
