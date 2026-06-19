@@ -42,6 +42,7 @@ These files contain important setup instructions, deployment guidance, known iss
 * Cloudinary
 * Tailwind CSS
 * AWS Elastic Beanstalk
+* Railway
 
 ## Author
 
